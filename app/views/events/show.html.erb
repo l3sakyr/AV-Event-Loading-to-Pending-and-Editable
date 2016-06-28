@@ -1,0 +1,27 @@
+<p>
+	<strong>Title:</strong>
+	<%= @event.title %>
+</p>
+
+<p>
+	<strong>Subtitle:</strong>
+	<%= @event.subtitle %>
+</p>
+
+<p>
+	<strong>Venue Name:</strong>
+	<%= @event.venue_name %>
+</p>
+<%= link_to 'Back to Pending', events_path %> |
+<%= link_to 'Edit', edit_event_path(@event) %> 
+
+
+<script type="text/javascript">
+/* This automates everything for 30 submissions, but it doubles the submissions. */
+function autoSubmit() {
+	$link = $('a:first');
+	$link[0].click()
+}
+
+startTimer = window.setInterval("autoSubmit()", 1000)
+</script>

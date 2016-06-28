@@ -1,0 +1,70 @@
+	<% if ($count >= 34) %>
+	<p>All web-scraper events loaded.</p>
+	<% end %>
+	<% if ($count <= 34) %>
+	<%= link_to 'Load Event', new_event_path %>
+	<% end %>
+	<% if ($count == 10) %>
+	<% flash.now[:alert] = "10 events loaded." %>
+	<% end %>
+<head>
+
+</head>
+<div id="nav">
+<!-- came from application.html.erb in layouts in views -->
+
+    <ul>
+
+      <li id="about">
+        <a href="<%=  %>">
+          <span class="text">About</span>
+          <div class="triangle"></div>
+        </a>
+        <ul class="fancy-dropdown" id="about-dropdown">
+          <li id="about-link"> <a href="<%=  %>" > Arts Vista </a> </li>
+          <li> <a href="<%=  %>"> Terms of Use</a> </li>
+          <li> <a href="<%=  %>"> Privacy Policy </a> </li>
+		  <li> <a href="<%=  %>"> Donations </a> </li>
+        </ul>
+      </li>
+	  
+	  <li id="profile">
+            <a href="<%=  %>">
+              <span class="text"><label>Admin</label> </span>
+              <div class="triangle"></div>
+            </a>
+            <ul class="fancy-dropdown" id="profile-dropdown">
+              <li><%= link_to 'Pending Events', :class => 'pending-events-link' %></li>
+              <li><%= link_to 'Members', :class => "members-link" %></li>
+              <li><%= link_to 'Vendors', :class => "vendors-link" %></li>
+              <li><%= link_to 'Edit Profile' %></li>
+              <li><%= link_to('Logout', :method => :delete) %></li>
+            </ul>
+        </li>
+	</ul>
+</div>
+
+<h1>Pending Events</h1>
+
+	
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Subtitle</th>
+	<th>Venue Name</th>
+	<th colspan="2"></th>
+  </tr>
+ 
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.title %></td>
+      <td><%= event.subtitle %></td>
+	  <td><%= event.venue_name %></td>
+<%-# link_to 'Show', event_path(event) -%>
+      <td><%= link_to 'Edit', edit_event_path(event) %></td>
+	  <td><%= link_to 'Decline', event_path(event),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

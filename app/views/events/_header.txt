@@ -1,0 +1,33 @@
+<div id="nav">
+<!-- came from application.html.erb in layouts in views -->
+
+    <ul>
+
+      <li id="about">
+        <a href="<%=  %>">
+          <span class="text">About</span>
+          <div class="triangle"></div>
+        </a>
+        <ul class="fancy-dropdown" id="about-dropdown">
+          <li id="about-link"> <a href="<%=  %>" > Arts Vista </a> </li>
+          <li> <a href="<%=  %>"> Terms of Use</a> </li>
+          <li> <a href="<%=  %>"> Privacy Policy </a> </li>
+		  <li> <a href="<%=  %>"> Donations </a> </li>
+        </ul>
+      </li>
+	  
+	  <li id="profile">
+            <a href="<%=  %>">
+              <span class="text"><label>Admin</label> </span>
+              <div class="triangle"></div>
+            </a>
+            <ul class="fancy-dropdown" id="profile-dropdown">
+              <li><%= link_to 'Pending Events', :class => 'pending-events-link' %></li>
+              <li><%= link_to 'Members', :class => "members-link" %></li>
+              <li><%= link_to 'Vendors', :class => "vendors-link" %></li>
+              <li><%= link_to 'Edit Profile' %></li>
+              <li><%= link_to('Logout', :method => :delete) %></li>
+            </ul>
+        </li>
+	</ul>
+</div>

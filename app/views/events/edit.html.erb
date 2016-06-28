@@ -1,0 +1,11 @@
+<h1>Editing Event</h1>
+ 
+<%= render 'form' %>
+ 
+<%= link_to 'Back to Pending', events_path %>
+<%= link_to 'Approve', event_path,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Decline', event_path,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>

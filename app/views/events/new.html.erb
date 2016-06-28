@@ -1,0 +1,122 @@
+<h1>New Event</h1>
+
+<%= form_for @event, :html => {:id => 'event'} do |f| %>
+
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@event.errors.count, "error") %> prohibited
+        this event from being saved:
+      </h2>
+      <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% @results.each do |val| %>
+
+	<label>Completed </label><%= "#{val['eventId']}" %><label> of </label>
+<% end %>
+<% @counter.each do |val| %>  
+		<%= "#{val['num']}" %><br>
+<% end %>
+<% @results.each do |val| %>
+
+	<p>
+		<%= f.label :title %><br>
+		<%= f.text_field :title, value: "#{val['title']}" %>
+	</p>
+
+	<p>
+		<%= f.label :subtitle %><br>
+		<%= f.text_field :subtitle, value: "#{val['subtitle']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :category %><br>
+		<%= f.text_field :category, value: "#{val['category']}" %>
+	</p>
+	
+		<p>
+		<%= f.label :description %><br>
+		<%= f.text_area :description, value: "#{val['description']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :picture %><br>
+		<%= f.text_field :picture, value: "#{val['picture']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :video %><br>
+		<%= f.text_field :video, value: "#{val['videoUrl']}" %>
+	</p>
+<% end %>
+<% @results2.each do |val| %>
+	<p>
+		<%= f.label :start_date %><br>
+		<%= f.text_field :start_date, value: "#{val['startDate']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :end_date %><br>
+		<%= f.text_field :end_date, value: "#{val['endDate']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :start_time %><br>
+		<%= f.text_field :start_time, value: "#{val['startTime']}" %>
+	</p>
+<% end %>
+<% @results3.each do |val| %>
+
+	<p>
+		<%= f.label :venue_name %><br>
+		<%= f.text_field :venue_name, value: "#{val['venue_name']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :address %><br>
+		<%= f.text_field :address, value: "#{val['address']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :city %><br>
+		<%= f.text_field :city, value: "#{val['city']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :province %><br>
+		<%= f.text_field :province, value: "#{val['province']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :ticket %><br>
+		<%= f.text_field :ticket, value: "#{val['ticketUrl']}" %>
+	</p>
+	
+	<p>
+		<%= f.label :price %><br>
+		<%= f.text_field :price, value: "#{val['ticketPrice']}" %>
+	</p>
+
+<% end %>
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+<%= link_to 'Back', events_path %>
+
+<script type="text/javascript">
+function autoSubmit() {
+
+	$("#event").trigger("submit.rails");
+}
+
+startTimer = window.setInterval("autoSubmit()", 1500)
+
+</script>
